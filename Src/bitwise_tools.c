@@ -7,9 +7,17 @@
 #include "bitwise_tools.h"
 
 
-void print_bit(unsigned char num)
+void print_bit(uint16_t num)
 {
 	printf("%i: ", num);
+	printf("%i", (num & BIT_16) ? 1:0);
+	printf("%i", (num & BIT_15) ? 1:0);
+	printf("%i", (num & BIT_14) ? 1:0);
+	printf("%i", (num & BIT_13) ? 1:0);
+	printf("%i", (num & BIT_12) ? 1:0);
+	printf("%i", (num & BIT_11) ? 1:0);
+	printf("%i", (num & BIT_10) ? 1:0);
+	printf("%i", (num & BIT_9) ? 1:0);
 	printf("%i", (num & BIT_8) ? 1:0);
 	printf("%i", (num & BIT_7) ? 1:0);
 	printf("%i", (num & BIT_6) ? 1:0);
@@ -21,7 +29,7 @@ void print_bit(unsigned char num)
 
 }
 
-void comparison_numberWithRef(unsigned char num, unsigned char ref)
+void comparison_numberWithRef(uint16_t num, uint16_t ref)
 {   //сравнивает число с другим числом
 	// для примера:
 	// num = 54, 0x36, 00110110
@@ -33,16 +41,16 @@ void comparison_numberWithRef(unsigned char num, unsigned char ref)
 		printf("Nope\n");
 }
 
-void shiftNUMLeft(unsigned char num, unsigned char bit){
+void shiftNUMLeft(uint16_t num, uint16_t bit){
 	// 1 - число, 2 - на сколько бит сдвигается
 	// Сдвигается все число, а не отдельный бит
 	// 2, 0x02, 0b00000010
 	print_bit(num);
-	print_bit(num<< bit);
+	print_bit(num << bit);
 	printf("\n");
 }
 
-void shiftNUMRight(unsigned char num, unsigned char bit){
+void shiftNUMRight(uint16_t num, uint16_t bit){
 	// 1 - число, 2 - на сколько бит сдвигается
 	// 2, 0x02, 0b00000010
 	print_bit(num);
@@ -50,33 +58,36 @@ void shiftNUMRight(unsigned char num, unsigned char bit){
 	printf("\n");
 }
 
-void shiftBITLeft(unsigned char num, unsigned char bit){
+void shiftBITLeft(uint16_t num, uint16_t bit){
 	//Выставление отдельного бита в заданном числе(без обнуления)
 	print_bit(num);
 	print_bit( num | (1 << bit));
 	printf("\n");
 }
 
-void shiftBITClear(unsigned char num, unsigned char bit){
+void shiftBITClear(uint16_t num, uint16_t bit){
 	print_bit(num);
-	print_bit( (num & 0) | (1 << bit));
+	print_bit((num & 0) | (1 << bit));
 	printf("\n");
 }
 
-void Ex1(unsigned char num, unsigned char bit){
+void Ex1(uint16_t num, uint16_t bit){
 	print_bit(num);
 	print_bit(num &~ (1 << bit));
 	printf("\n");
 }
 
-void Ex2(unsigned char num, unsigned char bit){
+void Ex2(uint16_t num, uint16_t bit){
 	print_bit(num);
 	print_bit(num ^ (1 << bit));
 	printf("\n");
 }
 
-void Ex3(unsigned char num, unsigned char bit){
+void Ex3(uint16_t num, uint16_t bit){
 	print_bit(num);
 	print_bit(num & (1 << bit));
 	printf("\n");
 }
+
+
+
